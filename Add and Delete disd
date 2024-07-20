@@ -1,0 +1,118 @@
+         CODE C 
+Thêm món
+void addDish() {
+    while (1) {
+        int num;
+        printf("Nhap so luong mon ban muon them vao: ");
+        scanf("%d", &num);
+        if (number + num <= max) {
+            for (int i = 0; i < num; i++) {
+                dish newDish;
+                printf("Nhap thong tin mon thu %d : \n", number + 1);
+                printf("Nhap ma mon: ");
+                scanf("%d", &newDish.id);
+                printf("Nhap ten mon: ");
+                getchar(); 
+                fgets(newDish.name, sizeof(newDish.name), stdin);
+                newDish.name[strcspn(newDish.name, "\n")] = '\0';
+                printf("Nhap gia mon: ");
+                scanf("%lf", &newDish.price);
+                menu[number] = newDish;
+                number++;
+            }
+            break;
+        } else {
+            printf("So luong them vao vuot qua muc cho phep. Vui long nhap lai\n");
+        }
+    }
+}
+Xoá món theo mã
+void deleteDishId() {
+    if(number==0){
+    int id;
+    int found=0;
+    while (!found) {
+        printf("Nhap ma mon ban muon xoa: ");
+        scanf("%d", &id);
+        for (int i = 0; i < number; i++) {
+            if (menu[i].id == id) {
+                for (int j = i; j < number - 1; j++) {
+                    menu[j] = menu[j + 1];
+                }
+                number--;
+                printf("Xoa mon thanh cong.\n");
+                found = 1;
+                break;
+            }
+        }
+        if (!found) {
+            printf("Khong tim thay mon ban muon xoa. Vui long nhap lai.\nNeu muon thoat thi nhap 0\n");
+        }
+        if(id==0){
+            break;
+        }
+    }
+    } else {
+        printf("Chua co mon vui long them mon\n");
+        addDish();
+    }
+}
+             CODE C++
+Thêm nhân viên
+void addStaff() {
+    while (1) {
+        int num;
+        printf("Nhap so luong nhan vien ban tuyen vao: ");
+        scanf("%d", &num);
+        if (nop + num <= max) {
+            for (int i = 0; i < num; i++) {
+                people newstaff;
+                printf("Nhap thong tin nhan vien thu %d : \n", nop + 1);
+                printf("Nhap ma nhan vien: ");
+                scanf("%d", &newstaff.id);
+                printf("Nhap ten nhan vien: ");
+                getchar(); 
+                fgets(newstaff.name, sizeof(newstaff.name), stdin);
+                newstaff.name[strcspn(newstaff.name, "\n")] = '\0';
+                printf("Nhap tien luong nhan vien: ");
+                scanf("%lf", &newstaff.slr);
+                staff[nop] = newstaff;
+                nop++;
+            }
+            break;
+        } else {
+            printf("So luong nhan vien vuot qua muc cho phep. Vui long nhap lai\n");
+        }
+    }
+}
+Hàm xoá nhân viên
+void deleteStaffId() {
+    if(nop!=0){
+    int id;
+    int found=0;
+    while (!found) {
+        printf("Nhap ma nhan vien ban muon xoa: ");
+        scanf("%d", &id);
+        for (int i = 0; i < nop; i++) {
+            if (staff[i].id == id) {
+                for (int j = i; j < nop - 1; j++) {
+                    staff[j] = staff[j + 1];
+                }
+                nop--;
+                printf("Xoa nhan vien thanh cong.\n");
+                found = 1;
+                break;
+            }
+        }
+        if (!found) {
+            printf("Khong tim thay nhan vien. Vui long nhap lai\nNeu muon thoat nhap 0.\n");
+        }
+        if(id==0){
+            break;
+        }
+    }
+    } else {
+        printf("Chua co nhan vien vui long them nhan vien.\n");
+        addStaff();
+    }
+}
