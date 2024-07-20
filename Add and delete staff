@@ -1,0 +1,118 @@
+          CODE C
+Thêm nhân viên
+void addStaff() {
+    while (1) {
+        int num;
+        printf("Nhap so luong nhan vien ban tuyen vao: ");
+        scanf("%d", &num);
+        if (nop + num <= max) {
+            for (int i = 0; i < num; i++) {
+                people newstaff;
+                printf("Nhap thong tin nhan vien thu %d : \n", nop + 1);
+                printf("Nhap ma nhan vien: ");
+                scanf("%d", &newstaff.id);
+                printf("Nhap ten nhan vien: ");
+                getchar(); 
+                fgets(newstaff.name, sizeof(newstaff.name), stdin);
+                newstaff.name[strcspn(newstaff.name, "\n")] = '\0';
+                printf("Nhap tien luong nhan vien: ");
+                scanf("%lf", &newstaff.slr);
+                staff[nop] = newstaff;
+                nop++;
+            }
+            break;
+        } else {
+            printf("So luong nhan vien vuot qua muc cho phep. Vui long nhap lai\n");
+        }
+    }
+}
+Hàm xoá nhân viên
+void deleteStaffId() {
+    if(nop!=0){
+    int id;
+    int found=0;
+    while (!found) {
+        printf("Nhap ma nhan vien ban muon xoa: ");
+        scanf("%d", &id);
+        for (int i = 0; i < nop; i++) {
+            if (staff[i].id == id) {
+                for (int j = i; j < nop - 1; j++) {
+                    staff[j] = staff[j + 1];
+                }
+                nop--;
+                printf("Xoa nhan vien thanh cong.\n");
+                found = 1;
+                break;
+            }
+        }
+        if (!found) {
+            printf("Khong tim thay nhan vien. Vui long nhap lai\nNeu muon thoat nhap 0.\n");
+        }
+        if(id==0){
+            break;
+        }
+    }
+    } else {
+        printf("Chua co nhan vien vui long them nhan vien.\n");
+        addStaff();
+    }
+}
+       CODE C++
+
+Thêm nhân viên
+void addStaff() {
+    while (true) {
+        int num;
+        cout << "Nhap so luong nhan vien ban tuyen vao: ";
+        cin >> num;
+        if (nop + num <= max) {
+            for (int i = 0; i < num; i++) {
+                people newstaff;
+                cout << "Nhap thong tin nhan vien thu " << (nop + 1) << " : " << endl;
+                cout << "Nhap ma nhan vien: ";
+                cin >> newstaff.id;
+                cout << "Nhap ten nhan vien: ";
+                cin.ignore(); 
+                cin.getline(newstaff.name, sizeof(newstaff.name));
+                cout << "Nhap tien luong nhan vien: ";
+                cin >> newstaff.slr;
+                staff[nop] = newstaff;
+                nop++;
+            }
+            break;
+        } else {
+            cout << "So luong nhan vien vuot qua muc cho phep. Vui long nhap lai" << endl;
+        }
+    }
+}
+Xoá nhân viên 
+void deleteStaffId() {
+    if(nop!=0){
+    int id;
+    bool found = false;
+    while (!found) {
+        cout << "Nhap ma nhan vien ban muon xoa: ";
+        cin >> id;
+        for (int i = 0; i < nop; i++) {
+            if (staff[i].id == id) {
+                for (int j = i; j < nop - 1; j++) {
+                    staff[j] = staff[j + 1];
+                }
+                nop--;
+                cout << "Xoa nhan vien thanh cong." << endl;
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            cout << "Khong tim thay nhan vien. Vui long nhap lai.\n"<< "Muon thoat thi nhap 0. " << endl;
+        }
+        if(id==0){
+            break;
+        }
+    }
+    } else {
+        cout << "Chua co mon. Vui long them mon" << endl;
+        addDish();
+    }
+}
